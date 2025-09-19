@@ -67,8 +67,8 @@ export default function ChatInput() {
         setTotalLoading(files.length)
         try {
             const result = await addAssets(formData).unwrap();
-            const urls: string[] = result?.data?.urls || [];
-            setFileUrls([...fileUrls, ...urls])
+            const urls: { name: string, url: string }[] = result?.data?.urls || [];
+            setFileUrls([...fileUrls, ...urls.map(item => item.url)])
             e.target.value = ''
             setTotalLoading(0)
         } catch {
