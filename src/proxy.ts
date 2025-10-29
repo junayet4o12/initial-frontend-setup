@@ -45,7 +45,7 @@ type AllowedRoute = typeof roleBasedRoutes[Role][number];
 // Protected routes (any route starting with these requires auth)
 const protectedRoutes: AllowedRoute[] = ["/dashboard", "/messages", "/profile", '/checkout/cancel', '/checkout/complete'];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get("accessToken")?.value;
 
